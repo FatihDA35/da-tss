@@ -1,0 +1,16 @@
+services:
+  da-tts:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: da-tts
+    ports:
+      - "127.0.0.1:7860:7860"
+    environment:
+      HF_HOME: /cache/huggingface
+    volumes:
+      - ema-model-cache:/cache/huggingface
+    restart: unless-stopped
+
+volumes:
+  ema-model-cache:
